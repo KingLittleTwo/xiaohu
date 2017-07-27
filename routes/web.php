@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api', function () {
+    return 'test api';
+});
+
+Route::get('/api/signup', function () {
+    $db = new \App\Model\User();
+    $db->signup();
+});
