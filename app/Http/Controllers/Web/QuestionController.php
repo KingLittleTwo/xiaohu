@@ -77,7 +77,7 @@ class QuestionController extends Controller
     {
         $question = new Question();
         if (empty($request->input('id')))
-            return ['status' => 0, 'msg' => '缺少参数 id'];
+            return ['status' => 0, 'msg' => '缺少参数ID'];
 
         $data = $question->find($request->input('id'));
         if (empty($data))
