@@ -36,15 +36,6 @@ class AnswerController extends Controller
         ];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -76,33 +67,20 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request)
     {
         $answers = new Answer();
         $answers->user_id = $request->session()->get('userinfo.user_id');
 
-//        if (empty($request->input('id')))
-        if (empty($id))
+        if (empty($request->input('id')))
             return ['status' => 0, 'msg' => '缺少参数ID'];
 
         return [
             'status' => 1,
             'data'   => $answers
-//            ->where('id', $request->input('id'))
-            ->where('id', $id)
+            ->where('id', $request->input('id'))
             ->first()
             ];
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -115,25 +93,26 @@ class AnswerController extends Controller
     public function update(Request $request)
     {
         $answers = new Answer();
-        $answers->user_id = $request->session()->get('userinfo.user_id');
+        $user_id = $request->session()->get('userinfo.user_id');
 
         if (empty($request->input('id')))
             return ['status' => 0, 'msg' => '缺少ID'];
-        $user_id = $answers
-            ->where('id', $request->input('id'))
-            ->select
+        $answer = $answers
+            ->where([
+                'id'      => $request->input('id'),
+                'user_id' => $answers->user
+            ])
+            ->select('id')
             ->first();
 
-    }
+        if (empty($answer))
+            return ['status' => 0, 'msg' => '只有作者可以编辑'];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if (!empty($request->input('content')))
+            $answer->content = $request->input('content');
+
+        return $answer->save() ?
+            ['status' => 1, 'msg' => '更新成功!'] :
+            ['status' => 0, 'msg' => '更新失败!'];
     }
 }

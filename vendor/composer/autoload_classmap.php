@@ -70,6 +70,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateQuestions' => $baseDir . '/database/migrations/2017_07_28_050122_create_questions.php',
     'CreateTableAnswers' => $baseDir . '/database/migrations/2017_07_31_112017_create_table_answers.php',
+    'CreateTableComments' => $baseDir . '/database/migrations/2017_08_01_162131_create_table_comments.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

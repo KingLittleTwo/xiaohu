@@ -348,6 +348,7 @@ class ComposerStaticInit293d9b9fcbecbe360cff3b43e59db3ad
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateQuestions' => __DIR__ . '/../..' . '/database/migrations/2017_07_28_050122_create_questions.php',
         'CreateTableAnswers' => __DIR__ . '/../..' . '/database/migrations/2017_07_31_112017_create_table_answers.php',
+        'CreateTableComments' => __DIR__ . '/../..' . '/database/migrations/2017_08_01_162131_create_table_comments.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
